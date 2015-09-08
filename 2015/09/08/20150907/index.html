@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于网页渲染的学习 | Lever&#39;s castle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于网页渲染的学习">
+<meta property="og:url" content="http://www.lever.wang/2015/09/08/20150907/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+<meta property="og:updated_time" content="2015-09-08T02:28:30.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于网页渲染的学习">
+<meta name="twitter:description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+  
+    <link rel="alternative" href="/atom.xml" title="Lever&#39;s castle" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xk5js.com1.z0.glb.clouddn.com/myPhoto.png?imageView2/2/w/203/h/203&amp;e=1441103821&amp;token=BS4xFAzJw1YkwtRQbCtOIGtDsqh8Qjr4oy-l7-l2:d06A8JFq8BJJj6r9r5ETQZtjRBw" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Lever Wang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Keep hungry,stay foolish</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/leverz" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3759364137" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/lever-56" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/WebPage-Rendering/" style="font-size: 10px;">WebPage Rendering</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">前端学习的路上，喜欢各种新鲜好玩的东西。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Lever Wang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xk5js.com1.z0.glb.clouddn.com/myPhoto.png?imageView2/2/w/203/h/203&amp;e=1441103821&amp;token=BS4xFAzJw1YkwtRQbCtOIGtDsqh8Qjr4oy-l7-l2:d06A8JFq8BJJj6r9r5ETQZtjRBw" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Lever Wang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Keep hungry,stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leverz" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3759364137" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/lever-56" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="[layout]-20150907" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/08/20150907/" class="article-date">
+  	<time datetime="2015-09-07T16:02:02.000Z" itemprop="datePublished">2015-09-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于网页渲染的学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebPage-Rendering/">WebPage Rendering</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于网页渲染的学习">关于网页渲染的学习</h1><hr>
+<p>首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。</p>
+<h2 id="浏览器是如何完成网页渲染的？">浏览器是如何完成网页渲染的？</h2><p>  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：</p>
+<h5 id="1-_根据来自服务器端的HTML代码形成文档对象模型（DOM）">1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）</h5><h5 id="2-_加载并解析样式，形成css对象模型">2. 加载并解析样式，形成css对象模型</h5><h5 id="3-_在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被称为渲染器或者渲染对象，在Gecko中称为“Frame”）。渲染树反映了文档对象模型的结构，但是不包含诸如标签或含有display：none属性的不可见元素。在渲染树中，每一段文本字符串都表现为独立的渲染器。每一个渲染对象都包含与之对应的DOM对象，或者文本块，还加上计算的样式，换言之，渲染树是文档对象模型的直观展示。">3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被称为渲染器或者渲染对象，在Gecko中称为“Frame”）。渲染树反映了文档对象模型的结构，但是不包含诸如标签或含有display：none属性的不可见元素。在渲染树中，每一段文本字符串都表现为独立的渲染器。每一个渲染对象都包含与之对应的DOM对象，或者文本块，还加上计算的样式，换言之，渲染树是文档对象模型的直观展示。</h5><h5 id="4-_对渲染树上的每个元素，计算它的坐标，称之为布局。浏览器采用一种流方法，布局一个元素只需通过一次，但是表格元素需要通过多次">4. 对渲染树上的每个元素，计算它的坐标，称之为布局。浏览器采用一种流方法，布局一个元素只需通过一次，但是表格元素需要通过多次</h5><h5 id="5-_最后，渲染树上的元素最终展示在浏览器里，这一过程称为“painting”">5. 最后，渲染树上的元素最终展示在浏览器里，这一过程称为“painting”</h5><hr>
+<h2 id="repaint">repaint</h2><p>当改变那些不会影响元素在网页中的位置的元素样式时，譬如background-color(背景色)， border-color(边框色)， visibility(可见性)，浏览器只会用新的样式将元素重绘一次(这就是重绘，或者说重新构造样式)。</p>
+<hr>
+<h2 id="reflow">reflow</h2><p>当改变影响到文本内容或结构，或者元素位置时，重排或者说重新布局就会发生。这些改变通常由以下事件触发：</p>
+<ul>
+<li>DOM操作</li>
+<li>（元素添加，删除，修改，或者元素顺序的改变）;</li>
+<li>内容变化，包括表单域内的文本改变;</li>
+<li>CSS属性的计算或改变;</li>
+<li>添加或删除样式表;</li>
+<li>更改“类”的属性;</li>
+<li>浏览器窗口的操作（缩放，滚动）;</li>
+<li>伪类激活（：悬停）。</li>
+</ul>
+<hr>
+<p>##浏览器如何优化渲染？<br>浏览器尽可能将重绘/重构 限制在被改变元素的区域内。比如，对于位置固定或绝对的元素，其大小改变只影响元素本身及其子元素，然而，静态定位元素的大小改变会触发后续所有元素的重流。<br>另一种优化技巧是，在运行几段JavaScript代码时，浏览器会缓存这些改变，在代码运行完毕后再将这些改变经一次通过加以应用。举个例子，下面这段代码只会触发一个重构和重绘：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>, <span class="string">'1px'</span>); <span class="comment">// reflow, repaint</span></span><br><span class="line">$body.css(<span class="string">'color'</span>, <span class="string">'red'</span>); <span class="comment">// repaint</span></span><br><span class="line">$body.css(<span class="string">'margin'</span>, <span class="string">'2px'</span>); <span class="comment">// reflow, repaint// only 1 reflow and repaint will actually happen</span></span><br></pre></td></tr></table></figure></p>
+<p>然而，如前所述，改变元素的属性会触发强制性的重排。如果我们在上面的代码块中加入一行代码，用来访问元素的属性，就会发生这种现象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>, <span class="string">'1px'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>); <span class="comment">// reading a property, a forced     reflow</span></span><br><span class="line">$body.css(<span class="string">'color'</span>, <span class="string">'red'</span>);</span><br><span class="line">$body.css(<span class="string">'margin'</span>, <span class="string">'2px'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>其结果就是，重排发生了两次。因此，你应该把访问元素属性的操作都组织在一起，从而优化网页性能。（你可以在JSBin查到更为详细的例子）<br>有时，你必须触发一个强制性重排。比如，我们必须将同样的属性(比如左边距)两次赋值给同一个元素。起初，它应该设置为100px，且不带动效。接着，它必须通过过渡(transition)动效改变为50px。你现在可以在JSbin上学习这个例子，不过我会在这儿更详细地介绍它。<br>首先，我们创建一个带过渡效果的CSS类：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.has-transition</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">      <span class="rule"><span class="attribute">-moz-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">-o-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">           <span class="rule"><span class="attribute">transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">   &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后继续执行：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// our element that has a "has-transition" class by defaultvar</span></span><br><span class="line">    $targetElem = $(<span class="string">'#targetElemId'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// remove the transition class</span></span><br><span class="line">    $targetElem.removeClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property expecting the transition to be off, as the class is not there// anymore</span></span><br><span class="line">    $targetElem.css(<span class="string">'margin-left'</span>, <span class="number">100</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// put the transition class back</span></span><br><span class="line">    $targetElem.addClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">    $targetElem.css(<span class="string">'margin-left'</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然而，这个执行无法奏效。所有改变都被缓存，只在代码块末尾加以执行。我们需要的是强制性的重排，我们可以通过以下更改加以实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// remove the transition class</span></span><br><span class="line">    $(<span class="keyword">this</span>).removeClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">    $(<span class="keyword">this</span>).css(<span class="string">'margin-left'</span>, <span class="number">100</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// trigger a forced reflow, so that changes in a class/property get applied immediately</span></span><br><span class="line">    $(<span class="keyword">this</span>)[<span class="number">0</span>].offsetHeight; <span class="comment">// an example, other properties would work, too</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 强制重排的意思就是，在你需要浏览器对页面进行重拍而浏览器没有对页面进行重排时，你可以通过访问元素属性的方式触发强制性的重排。</span></span><br><span class="line"><span class="comment">// put the transition class back</span></span><br><span class="line">$(<span class="keyword">this</span>).addClass(<span class="string">'has-transition'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">$(<span class="keyword">this</span>).css(<span class="string">'margin-left'</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure></p>
+<p>现在代码如预期那样执行了。</p>
+<p>##有关性能优化的实际建议</p>
+<ul>
+<li>创建有效的HTML和CSS文件，不要忘记指明文档的编码方式。样式应该包含在标签内，脚本代码则应该加在标签末端。</li>
+<li><p>尽量简化和优化CSS选择器（这种优化方式几乎被使用CSS预处理器的开发者统一忽视了）将嵌套程度保持在最低水平。以下是CSS选择器的性能排名（从最快者开始）</p>
+<pre><code><span class="number">1.</span> 识别器:<span class="preprocessor">#id</span>
+<span class="number">2.</span> 类:.<span class="keyword">class</span>
+<span class="number">3.</span> 标签：div
+<span class="number">4.</span> 相邻兄弟选择器：a + i
+<span class="number">5.</span> 父类选择器：ul&gt; li
+<span class="number">6.</span> 通用选择器：*
+<span class="number">7.</span> 属性选择：input[type=<span class="string">"text"</span>]
+<span class="number">8.</span> 伪类和伪元素：a:hover
+</code></pre></li>
+</ul>
+<pre><code>-<span class="ruby"> <span class="number">1</span>.在你的脚本代码中，尽可能减少<span class="constant">DOM</span>操作。缓存所有东西，包括元素属性以及对象（如果它们被重用的话）。当进行复杂的操作时，使用“孤立”元素会更好，之后可以将其加到<span class="constant">DOM</span>中（所谓“孤立”元素是与<span class="constant">DOM</span>脱离，仅保存在内存中的元素）。
+</span>
+-<span class="ruby"> <span class="number">2</span>.如果你使用jQuery来选择元素，请遵从jQuery选择器最佳实践方案。
+</span>
+-<span class="ruby"> <span class="number">3</span>.为了改变元素的样式，修改“类”的属性是奏效的方法之一。执行这一改变时，处在<span class="constant">DOM</span>渲染树的位置越深越好（这还有助于将逻辑与表象脱离）。
+</span>
+-<span class="ruby"> <span class="number">4</span>.尽量只给位置绝对或者固定的元素添加动画效果。
+</span>
+-<span class="ruby"> <span class="number">5</span>.在使用滚动时禁用复杂的悬停动效（比如，在中添加一个额外的不悬停类）。读者可以阅读关于这个问题的一篇文章。</span>
+</code></pre><p>想了解更多的细节问题，大家也可以看看这两篇文章：</p>
+<ol>
+<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="external">How browsers work？</a></li>
+<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a></li>
+</ol>
+<p>转自 <a href="http://www.ituring.com.cn/article/199622。" target="_blank" rel="external">http://www.ituring.com.cn/article/199622。</a><br>原文来自 <a href="http://frontendbabel.info/articles/webpage-rendering-101/" target="_blank" rel="external">http://frontendbabel.info/articles/webpage-rendering-101/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/08/20150907/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/31/20150831/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阿里前端工程师秋季校招笔试---答题自我分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20150907" data-title="关于网页渲染的学习" data-url="http://www.lever.wang/2015/09/08/20150907/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Lever Wang
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
