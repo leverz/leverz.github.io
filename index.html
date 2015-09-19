@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-clone/" style="font-size: 10px;">JavaScript clone</a> <a href="/tags/WebPage-Rendering/" style="font-size: 10px;">WebPage Rendering</a>
+						<a href="/tags/JavaScript-clone/" style="font-size: 10px;">JavaScript clone</a> <a href="/tags/WebPage-Rendering/" style="font-size: 10px;">WebPage Rendering</a> <a href="/tags/javascript-字符串处理/" style="font-size: 10px;">javascript 字符串处理</a>
 					</div>
 				</section>
 				
@@ -170,6 +170,66 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-20150919" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/19/20150919/" class="article-date">
+  	<time datetime="2015-09-19T09:19:47.000Z" itemprop="datePublished">2015-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/19/20150919/">字符串首尾去空</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="字符串首尾去空">字符串首尾去空</h1><p>标签（空格分隔）： JavaScript</p>
+<hr>
+<p>&emsp;&emsp;在web系统的前端开发中，我们经常要对用户输入的内容进行处理，处理通过后再交由后台程序处理。很多时候，用户并不像我们希望的那样善解人意，他们经常会输入千奇百怪的东西来挑战我们。今天要讲的内容，是对其中一种情况的处理—-字符串首尾去空。<br>&emsp;&emsp;我想大家也会经常遇到这样的情况，在登录某个网站时，图个方便，对用户名密码直接进行复制粘贴，然而用户名、密码明明输入正确，却总是被提示用户名、密码错误。仔细检查过后发现，居然是因为在复制时多选了个空格，导致匹配不正确。<br>&emsp;&emsp;真是太恼人了，什么破网站，你就不能智能一点帮我把空格去掉嘛！！！<br>&emsp;&emsp;哈哈，接下来我们就以前去探索，如何解决这个问题。</p>
+<hr>
+<p>方案一：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 去除字符串中的空白字符</span></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> trim = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= str.length; i++)&#123;</span><br><span class="line">   <span class="keyword">if</span> (str[i] == <span class="string">" "</span>) &#123;</span><br><span class="line">     i++;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (str[i] != <span class="string">" "</span>) &#123;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> j = i; j &lt;= str.length-i; j++)&#123;</span><br><span class="line">       trim.push(str[j]);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="keyword">for</span>(i = str.length-<span class="number">1</span>; i &gt; <span class="number">0</span>; i--)&#123;</span><br><span class="line">   <span class="keyword">if</span> (str[i] != <span class="string">" "</span>) &#123;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (str[i] == <span class="string">" "</span>) &#123;</span><br><span class="line">     trim.pop();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> trim.join(<span class="string">""</span>);</span><br><span class="line">  <span class="comment">// join方法可以将数组转换成字符串，split方法可以将字符穿转换成数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方案二(推荐方案)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正则表达式版</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> patternL = <span class="regexp">/^\s*/</span>,</span><br><span class="line">  patternR = <span class="regexp">/\s*$/</span>;</span><br><span class="line">  str = str.replace(patternL,<span class="string">''</span>).replace(patternR,<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript-字符串处理/">javascript 字符串处理</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-20150917" class="article article-type-post" itemscope itemprop="blogPost">
   
