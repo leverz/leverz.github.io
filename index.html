@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript-clone/" style="font-size: 10px;">JavaScript clone</a> <a href="/tags/WebPage-Rendering/" style="font-size: 10px;">WebPage Rendering</a> <a href="/tags/javascript-字符串处理/" style="font-size: 10px;">javascript 字符串处理</a>
+						<a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/JavaScript-clone/" style="font-size: 10px;">JavaScript clone</a> <a href="/tags/WebPage-Rendering/" style="font-size: 10px;">WebPage Rendering</a> <a href="/tags/javascript-字符串处理/" style="font-size: 10px;">javascript 字符串处理</a>
 					</div>
 				</section>
 				
@@ -170,6 +170,64 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-20150919-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/19/20150919-1/" class="article-date">
+  	<time datetime="2015-09-19T09:39:04.000Z" itemprop="datePublished">2015-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/19/20150919-1/">javascript实现数组去重</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="javascript实现数组去重">javascript实现数组去重</h1><p>标签（空格分隔）： JavaScript</p>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> type = <span class="built_in">Object</span>.prototype.toString.call(arr).slice(<span class="number">8</span>, -<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">if</span> (type == <span class="string">'Array'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">if</span>(isArray(arr))&#123;</span><br><span class="line">  <span class="keyword">var</span> Len = arr.length;</span><br><span class="line">  <span class="keyword">var</span> uniq = [];</span><br><span class="line">  <span class="keyword">var</span> i,j,n;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Len; i++)&#123;</span><br><span class="line">   <span class="keyword">var</span> l = uniq.length;</span><br><span class="line">   n = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; l; j++)&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] == uniq[j]) &#123;</span><br><span class="line">      n++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">    uniq.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> uniq;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Err=<span class="string">"不是数组"</span>;</span><br><span class="line">  <span class="keyword">return</span> Err;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;关于数组去重：使用uniq[]数组接收去重后的结果，去重时使用了哨兵变量n,如果该变量在uniq[]中已经存在了则n++，导致该值无法加入uniq[]。关于push()方法，他能将值加入到数组的最后一位上，相当于压栈，使元素成为栈顶元素；与之对应的是pop()方法，是出栈方法。还有unshift()方法，该方法将元素加入到数组开始的位置上。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-20150919" class="article article-type-post" itemscope itemprop="blogPost">
   
