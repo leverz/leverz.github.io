@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      jQuery源码分析之整体架构 | Lever&#39;s castle 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Lever Wang">
+    
+    
+
+    <meta name="description" content="jQuery源码分析之整体架构标签（空格分隔）： jQuery
+
+&amp;emsp;&amp;emsp;最近在学习jQuery的源码，参考了jQuery-2.1.4源码及Aaron写的jQuery 2.0.3源码分析系列文章，下面就谈谈我关于jQuery整体架构的理解。
+###一、jQuery的无new构建：&amp;emsp;&amp;emsp;首先，用过jQuery的人都知道，当我们使用jQuery时，是不存在还需要使用n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery源码分析之整体架构 | Lever's castle">
+<meta property="og:url" content="http://www.lever.wang/2015/09/22/20150922/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="jQuery源码分析之整体架构标签（空格分隔）： jQuery
+
+&amp;emsp;&amp;emsp;最近在学习jQuery的源码，参考了jQuery-2.1.4源码及Aaron写的jQuery 2.0.3源码分析系列文章，下面就谈谈我关于jQuery整体架构的理解。
+###一、jQuery的无new构建：&amp;emsp;&amp;emsp;首先，用过jQuery的人都知道，当我们使用jQuery时，是不存在还需要使用n">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0073/2601/3fc8106d-6afd-314c-a6bf-a64157145e67.jpg">
+<meta property="og:updated_time" content="2015-09-22T09:16:17.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery源码分析之整体架构 | Lever's castle">
+<meta name="twitter:description" content="jQuery源码分析之整体架构标签（空格分隔）： jQuery
+
+&amp;emsp;&amp;emsp;最近在学习jQuery的源码，参考了jQuery-2.1.4源码及Aaron写的jQuery 2.0.3源码分析系列文章，下面就谈谈我关于jQuery整体架构的理解。
+###一、jQuery的无new构建：&amp;emsp;&amp;emsp;首先，用过jQuery的人都知道，当我们使用jQuery时，是不存在还需要使用n">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Lever&#39;s castle</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          Keep hungry,stay foolish
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">jQuery源码分析之整体架构</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2015-09-22" class="post-meta__date date">2015-09-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/jQuery-source-code/">jQuery source code</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="jQuery源码分析之整体架构">jQuery源码分析之整体架构</h1><p>标签（空格分隔）： jQuery</p>
+<hr>
+<p>&emsp;&emsp;最近在学习jQuery的源码，参考了jQuery-2.1.4源码及Aaron写的<a href="http://www.cnblogs.com/aaronjs/p/3279314.html" target="_blank" rel="external">jQuery 2.0.3源码分析系列</a>文章，下面就谈谈我关于jQuery整体架构的理解。</p>
+<p>###一、jQuery的无new构建：<br>&emsp;&emsp;首先，用过jQuery的人都知道，当我们使用jQuery时，是不存在还需要使用new来构建对象以及调用方法的情况的。我们在使用jQuery时，通常都是要用什么就直接拿来用，从来不去考虑类和对象这样的关系（大部分时候是类似这样的：$(“.class”).attr();）。<br>&emsp;&emsp;那么jQuery内部是如何做到这一点的呢，探索现在就开始！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">&#125;；</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    <span class="comment">//原型</span></span><br><span class="line">    name: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    age: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> z = <span class="keyword">new</span> jQuery();</span><br><span class="line">z.name();</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;上面的方式，是我们使用JavaScript创建类和对象，并通过对象访问类中属性的一般方式。很明显，jQuery并不是这样的，我们使用jQuery的时候，哪次还专门通过new一个jQuery()对象的方式来访问jQuery中的属性呢？好，搞清楚问题所在，那我们继续探索。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery();</span><br><span class="line">&#125;;</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    <span class="comment">//原型</span></span><br><span class="line">    name: <span class="string">"wang"</span>,</span><br><span class="line">    age: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">jQuery.name;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这下不用new了，总行了吧？no，no，no，too young，too simple！你输出jQuery.name看看结果就知道了。这样做虽然返回了一个jQuery实例，但是也很明显让jQuery的构造陷入了死循环。<span id="jump"></span>在jQuery source code中，正确的解决方式是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.prototype.init();</span><br><span class="line">&#125;;</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: <span class="string">"wang"</span>,</span><br><span class="line">    age: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">jQuery.prototype.init.prototype = jQuery.prototype;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;看完了上面的source code是不是有种一头雾水的感觉，或者并没有看出里面有什么特别的东西。其实，短短几行代码，要理解它的经典之处，需要你对JavaScript的作用域有很深的理解。<br>&emsp;&emsp;那么，我现在就来讲讲jQuery这样的代码为什么会这样写。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> jQuery.prototype.init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;使用jQuery原型链上定义的init()方法的意义在于将类的实例化推迟到子类（这里是prototype）中，这里就把它当成<a href="https://zh.wikipedia.org/wiki/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95" target="_blank" rel="external">工厂方法</a>（设计模式中的一种）。<br>&emsp;&emsp;但是这样做又会有新的问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">"Li"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: <span class="string">"Wang"</span>,</span><br><span class="line">    age: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">jQuery.name;<span class="comment">//Li</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;由于之前的定义，init()中的this指向的是jQuery，因此在init()中用想要用this修改init()的属性实质上是修改了jQuery的属性，这并不是我们想要看到的。So…<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.prototype.init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;好吧，这样总算让this指向了init()方法了(new了谁，this就指向谁)……等等，那我想要访问jQuery的属性怎么办？this指向了init()那我不就只能访问init()的属性了么？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: <span class="string">"wang"</span>,</span><br><span class="line">    age: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(jQuery().age());</span><br><span class="line"><span class="comment">//error:Uncaught TypeError: jQuery(...).age is not a function(…)</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这里会提示出错，因为this指向的是init()。就像上面说的，它访问不到jQuery中的属性。<br>&emsp;&emsp;这怎么处理呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype.init().prototype = jQuery.prototype;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这样，把jQuery的属性全部附到init()的原型链下，这不就解决了访问不到的问题了么，而且init()内部的作用域也与jQuery本身的作用域分离开了。<br>&emsp;&emsp;<a href="#jump">现在请在回头看那段源码~</a><br>&emsp;&emsp;下面这张图来帮你更好的理解他们之间的关系。</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0073/2601/3fc8106d-6afd-314c-a6bf-a64157145e67.jpg" alt="此处输入图片的描述"></p>
+<hr>
+<p>###二、DOM链式调用的处理<br>&emsp;&emsp;我们都知道，DOM操作是很占开销的一件事情，频繁的操作DOM不利于浏览器渲染。（关于浏览器渲染可以看看我之前的文章:<a href="http://lever.wang/2015/09/08/20150907/" target="_blank" rel="external">关于网页渲染</a>）。<br>&emsp;&emsp;然而jQuery的许多方法都是需要操作DOM元素的，实现链式调用就显得极为必要了。通过只选择一次DOM元素来节省开销，避免遍历DOM树，对于网页性能提升来说至关重要，因此需要尽可能重用或者缓存已选择的DOM元素集。<br>&emsp;&emsp;那么jQuery是如何实现的呢？究其实质，用jQuery方法处理的元素总会在方法处理完毕之后得到返回。也就是说，总会返回一个this指向当前处理的元素，使它可以一直链式的传递下去。<br>&emsp;&emsp;举个栗子~<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">jQuery.init().name();</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>###三、extend()扩展jQuery<br>&emsp;&emsp;一个好的框架或类库必然是扩展性很强的，应该方便程序猿对其进行适当的扩展以满足需求。在jQuery中的extend()方法就是用来实现这一点的，而且它不仅是一个对外的接口，它对jQuery本事的属性和方法也能进行扩展。<br>&emsp;&emsp;Talk is cheap，show me the code.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">jQuery.extend = zQuery.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> src, copyIsArray, copy, name, options, clone,</span><br><span class="line">		target = <span class="built_in">arguments</span>[<span class="number">0</span>] || &#123;&#125;, <span class="comment">//获取extend方法的第一个参数</span></span><br><span class="line">		i = <span class="number">1</span>,  <span class="comment">//克隆是将target后面的元素添加到target中，所以i要从target后开始计数</span></span><br><span class="line">		length = <span class="built_in">arguments</span>.length,</span><br><span class="line">		deep = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// deep copy</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">typeof</span> target === <span class="string">'boolean'</span>) &#123;   <span class="comment">//判断第一个参数是否为boolean值，来确定是否需要进行深度克隆。</span></span><br><span class="line">			deep = target;</span><br><span class="line">			target = <span class="built_in">arguments</span>[<span class="number">1</span>] || &#123;&#125;;<span class="comment">//第一个参数是Boolean 那么目标对象target只能是第二个参数了</span></span><br><span class="line">			i = <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">typeof</span> target !== <span class="string">"object"</span> &amp;&amp; !zQuery.isFunction(target))&#123;  <span class="comment">//剔除克隆时的奇怪情况。。。比如说String类型:jQuery.extend( 'hello' , &#123;nick: 'casper&#125;)</span></span><br><span class="line">			target = &#123;&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (length === i) &#123;   <span class="comment">//判断是不是只有target参数，而没有要向其添加的参数</span></span><br><span class="line">			target = <span class="keyword">this</span>;</span><br><span class="line">			--i;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">for</span> (; i &lt; length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> ((options = <span class="built_in">arguments</span>[i]) != <span class="literal">null</span>) &#123; <span class="comment">//要克隆的对象不为null则开始克隆</span></span><br><span class="line">				<span class="keyword">for</span>(name <span class="keyword">in</span> options)&#123;</span><br><span class="line">					src = target[name];</span><br><span class="line">					copy = options[name];</span><br><span class="line">					<span class="keyword">if</span> (target === copy) &#123; <span class="comment">//这一步是为了防止自引用导致无限循环</span></span><br><span class="line">						<span class="keyword">continue</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span> (deep &amp;&amp; copy &amp;&amp; (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))) &#123; <span class="comment">//判断是不是深度克隆，并判断要克隆的内容是不是对象或数组</span></span><br><span class="line">						<span class="keyword">if</span>(copyIsArray)&#123;</span><br><span class="line">							copyIsArray = <span class="literal">false</span>;</span><br><span class="line">							clone = src &amp;&amp; zQuery.isArray(src) ? src : [];</span><br><span class="line">						&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">							clone = src &amp;&amp; zQuery.isPlainObject(src) ? src : &#123;&#125;;</span><br><span class="line">						&#125;</span><br><span class="line">						target[name] = jQuery.extend(deep,clone,copy); <span class="comment">//递归执行克隆，直到可以进行浅克隆的地方(见else if)，然后再一层一层往回走，直到最外层的target，然后返回克隆后的结果</span></span><br><span class="line"></span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span> (copy !== <span class="literal">undefined</span>)&#123;</span><br><span class="line">						target[name] = copy;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;颤抖吧地球人，好好去拜读源码吧，我在旁边写了注释，要是还理解不了,那看看这篇文章吧：<a href="http://www.cnblogs.com/chyingp/archive/2013/06/03/jquery-extend.html" target="_blank" rel="external">http://www.cnblogs.com/chyingp/archive/2013/06/03/jquery-extend.html</a></p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

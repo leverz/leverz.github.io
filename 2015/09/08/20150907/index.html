@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      关于网页渲染的学习 | Lever&#39;s castle 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Lever Wang">
+    
+    
+
+    <meta name="description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于网页渲染的学习 | Lever's castle">
+<meta property="og:url" content="http://www.lever.wang/2015/09/08/20150907/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+<meta property="og:updated_time" content="2015-09-08T02:28:30.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于网页渲染的学习 | Lever's castle">
+<meta name="twitter:description" content="关于网页渲染的学习
+首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。
+浏览器是如何完成网页渲染的？  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：
+1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）2. 加载并解析样式，形成css对象模型3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Lever&#39;s castle</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          Keep hungry,stay foolish
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">关于网页渲染的学习</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2015-09-08" class="post-meta__date date">2015-09-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/WebPage-Rendering/">WebPage Rendering</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="关于网页渲染的学习">关于网页渲染的学习</h1><hr>
+<p>首先你要了解，由于不同浏览器引擎的工作方式不同，所以不同浏览器之间，网页渲染有所差异。</p>
+<h2 id="浏览器是如何完成网页渲染的？">浏览器是如何完成网页渲染的？</h2><p>  首先你应该清楚，浏览器的在完成网页渲染时，它的动作有哪些：</p>
+<h5 id="1-_根据来自服务器端的HTML代码形成文档对象模型（DOM）">1. 根据来自服务器端的HTML代码形成文档对象模型（DOM）</h5><h5 id="2-_加载并解析样式，形成css对象模型">2. 加载并解析样式，形成css对象模型</h5><h5 id="3-_在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被称为渲染器或者渲染对象，在Gecko中称为“Frame”）。渲染树反映了文档对象模型的结构，但是不包含诸如标签或含有display：none属性的不可见元素。在渲染树中，每一段文本字符串都表现为独立的渲染器。每一个渲染对象都包含与之对应的DOM对象，或者文本块，还加上计算的样式，换言之，渲染树是文档对象模型的直观展示。">3. 在文档对象模型和CSS对象模型之上，创建一棵由一组待生成对象组成的渲染树（在webkit中被称为渲染器或者渲染对象，在Gecko中称为“Frame”）。渲染树反映了文档对象模型的结构，但是不包含诸如标签或含有display：none属性的不可见元素。在渲染树中，每一段文本字符串都表现为独立的渲染器。每一个渲染对象都包含与之对应的DOM对象，或者文本块，还加上计算的样式，换言之，渲染树是文档对象模型的直观展示。</h5><h5 id="4-_对渲染树上的每个元素，计算它的坐标，称之为布局。浏览器采用一种流方法，布局一个元素只需通过一次，但是表格元素需要通过多次">4. 对渲染树上的每个元素，计算它的坐标，称之为布局。浏览器采用一种流方法，布局一个元素只需通过一次，但是表格元素需要通过多次</h5><h5 id="5-_最后，渲染树上的元素最终展示在浏览器里，这一过程称为“painting”">5. 最后，渲染树上的元素最终展示在浏览器里，这一过程称为“painting”</h5><hr>
+<h2 id="repaint">repaint</h2><p>当改变那些不会影响元素在网页中的位置的元素样式时，譬如background-color(背景色)， border-color(边框色)， visibility(可见性)，浏览器只会用新的样式将元素重绘一次(这就是重绘，或者说重新构造样式)。</p>
+<hr>
+<h2 id="reflow">reflow</h2><p>当改变影响到文本内容或结构，或者元素位置时，重排或者说重新布局就会发生。这些改变通常由以下事件触发：</p>
+<ul>
+<li>DOM操作</li>
+<li>（元素添加，删除，修改，或者元素顺序的改变）;</li>
+<li>内容变化，包括表单域内的文本改变;</li>
+<li>CSS属性的计算或改变;</li>
+<li>添加或删除样式表;</li>
+<li>更改“类”的属性;</li>
+<li>浏览器窗口的操作（缩放，滚动）;</li>
+<li>伪类激活（：悬停）。</li>
+</ul>
+<hr>
+<p>##浏览器如何优化渲染？<br>浏览器尽可能将重绘/重构 限制在被改变元素的区域内。比如，对于位置固定或绝对的元素，其大小改变只影响元素本身及其子元素，然而，静态定位元素的大小改变会触发后续所有元素的重流。<br>另一种优化技巧是，在运行几段JavaScript代码时，浏览器会缓存这些改变，在代码运行完毕后再将这些改变经一次通过加以应用。举个例子，下面这段代码只会触发一个重构和重绘：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>, <span class="string">'1px'</span>); <span class="comment">// reflow, repaint</span></span><br><span class="line">$body.css(<span class="string">'color'</span>, <span class="string">'red'</span>); <span class="comment">// repaint</span></span><br><span class="line">$body.css(<span class="string">'margin'</span>, <span class="string">'2px'</span>); <span class="comment">// reflow, repaint// only 1 reflow and repaint will actually happen</span></span><br></pre></td></tr></table></figure></p>
+<p>然而，如前所述，改变元素的属性会触发强制性的重排。如果我们在上面的代码块中加入一行代码，用来访问元素的属性，就会发生这种现象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $body = $(<span class="string">'body'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>, <span class="string">'1px'</span>);</span><br><span class="line">$body.css(<span class="string">'padding'</span>); <span class="comment">// reading a property, a forced     reflow</span></span><br><span class="line">$body.css(<span class="string">'color'</span>, <span class="string">'red'</span>);</span><br><span class="line">$body.css(<span class="string">'margin'</span>, <span class="string">'2px'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>其结果就是，重排发生了两次。因此，你应该把访问元素属性的操作都组织在一起，从而优化网页性能。（你可以在JSBin查到更为详细的例子）<br>有时，你必须触发一个强制性重排。比如，我们必须将同样的属性(比如左边距)两次赋值给同一个元素。起初，它应该设置为100px，且不带动效。接着，它必须通过过渡(transition)动效改变为50px。你现在可以在JSbin上学习这个例子，不过我会在这儿更详细地介绍它。<br>首先，我们创建一个带过渡效果的CSS类：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.has-transition</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">      <span class="rule"><span class="attribute">-moz-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">-o-transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">           <span class="rule"><span class="attribute">transition</span>:<span class="value"> margin-left <span class="number">1s</span> ease-out</span></span>;</span><br><span class="line">   &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后继续执行：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// our element that has a "has-transition" class by defaultvar</span></span><br><span class="line">    $targetElem = $(<span class="string">'#targetElemId'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// remove the transition class</span></span><br><span class="line">    $targetElem.removeClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property expecting the transition to be off, as the class is not there// anymore</span></span><br><span class="line">    $targetElem.css(<span class="string">'margin-left'</span>, <span class="number">100</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// put the transition class back</span></span><br><span class="line">    $targetElem.addClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">    $targetElem.css(<span class="string">'margin-left'</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure></p>
+<p>然而，这个执行无法奏效。所有改变都被缓存，只在代码块末尾加以执行。我们需要的是强制性的重排，我们可以通过以下更改加以实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// remove the transition class</span></span><br><span class="line">    $(<span class="keyword">this</span>).removeClass(<span class="string">'has-transition'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">    $(<span class="keyword">this</span>).css(<span class="string">'margin-left'</span>, <span class="number">100</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// trigger a forced reflow, so that changes in a class/property get applied immediately</span></span><br><span class="line">    $(<span class="keyword">this</span>)[<span class="number">0</span>].offsetHeight; <span class="comment">// an example, other properties would work, too</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 强制重排的意思就是，在你需要浏览器对页面进行重拍而浏览器没有对页面进行重排时，你可以通过访问元素属性的方式触发强制性的重排。</span></span><br><span class="line"><span class="comment">// put the transition class back</span></span><br><span class="line">$(<span class="keyword">this</span>).addClass(<span class="string">'has-transition'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// change the property</span></span><br><span class="line">$(<span class="keyword">this</span>).css(<span class="string">'margin-left'</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure></p>
+<p>现在代码如预期那样执行了。</p>
+<p>##有关性能优化的实际建议</p>
+<ul>
+<li>创建有效的HTML和CSS文件，不要忘记指明文档的编码方式。样式应该包含在标签内，脚本代码则应该加在标签末端。</li>
+<li><p>尽量简化和优化CSS选择器（这种优化方式几乎被使用CSS预处理器的开发者统一忽视了）将嵌套程度保持在最低水平。以下是CSS选择器的性能排名（从最快者开始）</p>
+<pre><code><span class="number">1.</span> 识别器:<span class="preprocessor">#id</span>
+<span class="number">2.</span> 类:.<span class="keyword">class</span>
+<span class="number">3.</span> 标签：div
+<span class="number">4.</span> 相邻兄弟选择器：a + i
+<span class="number">5.</span> 父类选择器：ul&gt; li
+<span class="number">6.</span> 通用选择器：*
+<span class="number">7.</span> 属性选择：input[type=<span class="string">"text"</span>]
+<span class="number">8.</span> 伪类和伪元素：a:hover
+</code></pre></li>
+</ul>
+<pre><code>-<span class="ruby"> <span class="number">1</span>.在你的脚本代码中，尽可能减少<span class="constant">DOM</span>操作。缓存所有东西，包括元素属性以及对象（如果它们被重用的话）。当进行复杂的操作时，使用“孤立”元素会更好，之后可以将其加到<span class="constant">DOM</span>中（所谓“孤立”元素是与<span class="constant">DOM</span>脱离，仅保存在内存中的元素）。
+</span>
+-<span class="ruby"> <span class="number">2</span>.如果你使用jQuery来选择元素，请遵从jQuery选择器最佳实践方案。
+</span>
+-<span class="ruby"> <span class="number">3</span>.为了改变元素的样式，修改“类”的属性是奏效的方法之一。执行这一改变时，处在<span class="constant">DOM</span>渲染树的位置越深越好（这还有助于将逻辑与表象脱离）。
+</span>
+-<span class="ruby"> <span class="number">4</span>.尽量只给位置绝对或者固定的元素添加动画效果。
+</span>
+-<span class="ruby"> <span class="number">5</span>.在使用滚动时禁用复杂的悬停动效（比如，在中添加一个额外的不悬停类）。读者可以阅读关于这个问题的一篇文章。</span>
+</code></pre><p>想了解更多的细节问题，大家也可以看看这两篇文章：</p>
+<ol>
+<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="external">How browsers work？</a></li>
+<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a></li>
+</ol>
+<p>转自 <a href="http://www.ituring.com.cn/article/199622。" target="_blank" rel="external">http://www.ituring.com.cn/article/199622。</a><br>原文来自 <a href="http://frontendbabel.info/articles/webpage-rendering-101/" target="_blank" rel="external">http://frontendbabel.info/articles/webpage-rendering-101/</a></p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

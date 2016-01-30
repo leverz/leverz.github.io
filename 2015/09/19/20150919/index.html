@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      字符串首尾去空 | Lever&#39;s castle 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Lever Wang">
+    
+    
+
+    <meta name="description" content="字符串首尾去空标签（空格分隔）： JavaScript
+
+&amp;emsp;&amp;emsp;在web系统的前端开发中，我们经常要对用户输入的内容进行处理，处理通过后再交由后台程序处理。很多时候，用户并不像我们希望的那样善解人意，他们经常会输入千奇百怪的东西来挑战我们。今天要讲的内容，是对其中一种情况的处理—-字符串首尾去空。&amp;emsp;&amp;emsp;我想大家也会经常遇到这样的情况，在登录某个网站时，图个方便，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串首尾去空 | Lever's castle">
+<meta property="og:url" content="http://www.lever.wang/2015/09/19/20150919/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="字符串首尾去空标签（空格分隔）： JavaScript
+
+&amp;emsp;&amp;emsp;在web系统的前端开发中，我们经常要对用户输入的内容进行处理，处理通过后再交由后台程序处理。很多时候，用户并不像我们希望的那样善解人意，他们经常会输入千奇百怪的东西来挑战我们。今天要讲的内容，是对其中一种情况的处理—-字符串首尾去空。&amp;emsp;&amp;emsp;我想大家也会经常遇到这样的情况，在登录某个网站时，图个方便，">
+<meta property="og:updated_time" content="2015-09-19T09:21:24.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串首尾去空 | Lever's castle">
+<meta name="twitter:description" content="字符串首尾去空标签（空格分隔）： JavaScript
+
+&amp;emsp;&amp;emsp;在web系统的前端开发中，我们经常要对用户输入的内容进行处理，处理通过后再交由后台程序处理。很多时候，用户并不像我们希望的那样善解人意，他们经常会输入千奇百怪的东西来挑战我们。今天要讲的内容，是对其中一种情况的处理—-字符串首尾去空。&amp;emsp;&amp;emsp;我想大家也会经常遇到这样的情况，在登录某个网站时，图个方便，">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Lever&#39;s castle</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          Keep hungry,stay foolish
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">字符串首尾去空</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2015-09-19" class="post-meta__date date">2015-09-19</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/javascript-字符串处理/">javascript 字符串处理</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="字符串首尾去空">字符串首尾去空</h1><p>标签（空格分隔）： JavaScript</p>
+<hr>
+<p>&emsp;&emsp;在web系统的前端开发中，我们经常要对用户输入的内容进行处理，处理通过后再交由后台程序处理。很多时候，用户并不像我们希望的那样善解人意，他们经常会输入千奇百怪的东西来挑战我们。今天要讲的内容，是对其中一种情况的处理—-字符串首尾去空。<br>&emsp;&emsp;我想大家也会经常遇到这样的情况，在登录某个网站时，图个方便，对用户名密码直接进行复制粘贴，然而用户名、密码明明输入正确，却总是被提示用户名、密码错误。仔细检查过后发现，居然是因为在复制时多选了个空格，导致匹配不正确。<br>&emsp;&emsp;真是太恼人了，什么破网站，你就不能智能一点帮我把空格去掉嘛！！！<br>&emsp;&emsp;哈哈，接下来我们就以前去探索，如何解决这个问题。</p>
+<hr>
+<p>方案一：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 去除字符串中的空白字符</span></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> trim = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= str.length; i++)&#123;</span><br><span class="line">   <span class="keyword">if</span> (str[i] == <span class="string">" "</span>) &#123;</span><br><span class="line">     i++;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (str[i] != <span class="string">" "</span>) &#123;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> j = i; j &lt;= str.length-i; j++)&#123;</span><br><span class="line">       trim.push(str[j]);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="keyword">for</span>(i = str.length-<span class="number">1</span>; i &gt; <span class="number">0</span>; i--)&#123;</span><br><span class="line">   <span class="keyword">if</span> (str[i] != <span class="string">" "</span>) &#123;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (str[i] == <span class="string">" "</span>) &#123;</span><br><span class="line">     trim.pop();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> trim.join(<span class="string">""</span>);</span><br><span class="line">  <span class="comment">// join方法可以将数组转换成字符串，split方法可以将字符穿转换成数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方案二(推荐方案)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正则表达式版</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> patternL = <span class="regexp">/^\s*/</span>,</span><br><span class="line">  patternR = <span class="regexp">/\s*$/</span>;</span><br><span class="line">  str = str.replace(patternL,<span class="string">''</span>).replace(patternR,<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
