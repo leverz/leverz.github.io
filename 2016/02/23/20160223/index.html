@@ -7,7 +7,7 @@
     
 
     <title>
-       | Lever&#39;s castle 
+      优雅的给数组降维 | Lever&#39;s castle 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,22 +16,19 @@
     
     
 
-    <meta name="description" content="title: ‘优雅的给数组降维’date: 2016-02-23 13:00:00tags: JavaScript
-###1. 最笨的办法~
-123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for">
+    <meta name="description" content="###1. 最笨的办法~
+123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for (var j = 0; j &amp;lt; arr[i].length; j++) &amp;#123;            re">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" | Lever's castle">
+<meta property="og:title" content="优雅的给数组降维 | Lever's castle">
 <meta property="og:url" content="http://www.lever.wang/2016/02/23/20160223/index.html">
 <meta property="og:site_name" content="Lever's castle">
-<meta property="og:description" content="title: ‘优雅的给数组降维’date: 2016-02-23 13:00:00tags: JavaScript
-###1. 最笨的办法~
-123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for">
-<meta property="og:updated_time" content="2016-02-23T05:10:19.032Z">
+<meta property="og:description" content="###1. 最笨的办法~
+123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for (var j = 0; j &amp;lt; arr[i].length; j++) &amp;#123;            re">
+<meta property="og:updated_time" content="2016-02-23T05:11:26.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" | Lever's castle">
-<meta name="twitter:description" content="title: ‘优雅的给数组降维’date: 2016-02-23 13:00:00tags: JavaScript
-###1. 最笨的办法~
-123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for">
+<meta name="twitter:title" content="优雅的给数组降维 | Lever's castle">
+<meta name="twitter:description" content="###1. 最笨的办法~
+123456789function reduceDimension(arr) &amp;#123;    var reduced = [];    for (var i = 0; i &amp;lt; arr.length; i++) &amp;#123;        for (var j = 0; j &amp;lt; arr[i].length; j++) &amp;#123;            re">
     
     
     
@@ -197,7 +194,7 @@ classes that you can use:
 
   <header class="post-header">
     
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">优雅的给数组降维</h1>
 
     
 
@@ -209,6 +206,11 @@ classes that you can use:
           
 
           
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/JavaScript/">JavaScript</a>
+            </font>
+          
 
       </span>
     </div>
@@ -218,8 +220,7 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    <p>title: ‘优雅的给数组降维’<br>date: 2016-02-23 13:00:00<br>tags: JavaScript</p>
-<p>###1. 最笨的办法~</p>
+    <p>###1. 最笨的办法~</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduceDimension</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reduced = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr[i].length; j++) &#123;</span><br><span class="line">            reduced.push(arr[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> reduced;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>###2. 利用concat转换</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat</a></p>
