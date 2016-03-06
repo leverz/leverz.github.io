@@ -18,20 +18,20 @@
 
     <meta name="description" content="&amp;emsp;window.onload与jQuery(document).ready的主要区别有两点：
  &amp;emsp;1. 执行时间 &amp;emsp;2. 执行数量
-###1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去">
+##1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去执">
 <meta property="og:type" content="article">
 <meta property="og:title" content="window.onload与jQuery(document).ready的区别 | Lever's castle">
 <meta property="og:url" content="http://www.lever.wang/2016/03/06/20160306/index.html">
 <meta property="og:site_name" content="Lever's castle">
 <meta property="og:description" content="&amp;emsp;window.onload与jQuery(document).ready的主要区别有两点：
  &amp;emsp;1. 执行时间 &amp;emsp;2. 执行数量
-###1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去">
-<meta property="og:updated_time" content="2016-03-06T10:07:50.831Z">
+##1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去执">
+<meta property="og:updated_time" content="2016-03-06T10:10:58.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="window.onload与jQuery(document).ready的区别 | Lever's castle">
 <meta name="twitter:description" content="&amp;emsp;window.onload与jQuery(document).ready的主要区别有两点：
  &amp;emsp;1. 执行时间 &amp;emsp;2. 执行数量
-###1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去">
+##1.执行时间&amp;emsp;&amp;emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。&amp;emsp;&amp;emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去执">
     
     
     
@@ -211,7 +211,7 @@ classes that you can use:
           
              &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/JavaScript-jQuery/">JavaScript,jQuery</a>
+              <a class="tags-link" href="/tags/JavaScript-jQuery/">JavaScript jQuery</a>
             </font>
           
 
@@ -225,11 +225,11 @@ classes that you can use:
   <section id="post-content" class="article-content post">
     <p>&emsp;window.onload与jQuery(document).ready的主要区别有两点：</p>
 <p> &emsp;1. 执行时间<br> &emsp;2. 执行数量</p>
-<p>###1.执行时间<br>&emsp;&emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。<br>&emsp;&emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去执行。<br>&emsp;&emsp;页面内容在浏览器中的加载顺序一般是：解析html标签，然后加载js和css，最后才去加载图片等信息。所有可以理解为，jQuery(document).ready执行在图片等信息加载之前，而window.onload执行在图片加载完成之后。<br>&emsp;&emsp;那么jQuery(document).ready具体是如何实现的呢？分析如下：</p>
+<p>##1.执行时间<br>&emsp;&emsp;一般情况下是jQuery(document).ready先执行，它的执行时间是DOM结构都准备好之后。<br>&emsp;&emsp;而window.onload方法，是在页面的所有内容都准备好之后，才去执行。<br>&emsp;&emsp;页面内容在浏览器中的加载顺序一般是：解析html标签，然后加载js和css，最后才去加载图片等信息。所有可以理解为，jQuery(document).ready执行在图片等信息加载之前，而window.onload执行在图片加载完成之后。<br>&emsp;&emsp;那么jQuery(document).ready具体是如何实现的呢？分析如下：</p>
 <p> 判断<strong>document.readyState</strong>的状态，如果状态为<strong>complete</strong>，表示<strong>文档结构加载完成</strong>，执行jQuery.ready方法。<br>document.readyState方法是只读的，传回的值可以是：<br>    &emsp;&emsp;0-UNINITIALIZED：XML对象被产生，但没有任何文件被加载<br>    &emsp;&emsp;1-LOADING：加载程序进行中，但文件尚未解析<br>    &emsp;&emsp;2-LOADED：部分文件已经加载并解析完成，但对象模型尚未生效<br>    &emsp;&emsp;3-INTERACTIVE：仅对已经加载的部分文件有效，对象模型有效但是是只读的。<br>    &emsp;&emsp;4-COMPLETED：文件已经完全加载，代表加载成功。<br>DOM API中提供了检测readyState值变化的API————onreadystatechange.</p>
 <p>可以参考：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/readystatechange" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Events/readystatechange</a></p>
 <p>想了解更多jquery DOM Ready函数的知识可以看看这篇文章，讲的很透彻。<a href="http://www.html-js.com/article/Read-jQuery-jQuery-DOM-Ready" target="_blank" rel="external">http://www.html-js.com/article/Read-jQuery-jQuery-DOM-Ready</a></p>
-<p>###2.执行次数<br> window.onload函数只执行一次，如果出现多个window.onload，那么只执行最后一个函数。<br>    jQuery.ready函数可以执行多次。</p>
+<p>##2.执行次数<br> window.onload函数只执行一次，如果出现多个window.onload，那么只执行最后一个函数。<br>    jQuery.ready函数可以执行多次。</p>
 
   </section>
 
