@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      coin changes 与 动态规划问题求解 | Lever&#39;s castle 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Lever Wang">
+    
+    
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;最近在研究leetcode上学习算法。遇到了一个很经典的问题————coin changes
+
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coin changes 与 动态规划问题求解 | Lever's castle">
+<meta property="og:url" content="http://www.lever.wang/2016/05/04/20160504/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;最近在研究leetcode上学习算法。遇到了一个很经典的问题————coin changes
+
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins th">
+<meta property="og:image" content="http://7xt4ft.com1.z0.glb.clouddn.com/coins.png">
+<meta property="og:image" content="https://upload.wikimedia.org/math/e/a/1/ea13228b2e191bea18790a4718a668ba.png">
+<meta property="og:image" content="https://upload.wikimedia.org/math/b/d/4/bd46e8163314e0eafa46b8f89f48cbfb.png">
+<meta property="og:updated_time" content="2016-05-03T16:30:36.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="coin changes 与 动态规划问题求解 | Lever's castle">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;最近在研究leetcode上学习算法。遇到了一个很经典的问题————coin changes
+
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins th">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for Lever&#39;s castle"><img src="/images/avatar.png" width="80" alt="Lever&#39;s castle logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Lever&#39;s castle</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          Keep hungry,stay foolish
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/leverz" title="Lever's Github">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+      -->
+      <li class="navigation__item">
+        <a href="http://weibo.com/u/3759364137" title="Lever's Weibo">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">coin changes 与 动态规划问题求解</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-05-04" class="post-meta__date date">2016-05-04</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/算法-动态规划/">算法 动态规划</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&nbsp;&nbsp;最近在研究leetcode上学习算法。遇到了一个很经典的问题————coin changes</p>
+<blockquote>
+<p>You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.<br><strong>Example 1:</strong><br>coins = [1, 2, 5], amount = 11<br>return 3 (11 = 5 + 5 + 1)<br><strong>Example 2:</strong><br>coins = <a href="https://www.zhihu.com/question/23995189" target="_blank" rel="external">2</a>, amount = 3<br>return -1.<br><strong>Note:</strong><br>You may assume that you have an infinite number of each kind of coin.</p>
+</blockquote>
+<p>&nbsp;&nbsp;这是问题的描述，大概意思是我们有不同面值的硬币各无穷多个，任意组合使其可以得到我们想要的面值。题目要求我们写一个function去计算得到这个指定面值所要用到的最少的硬币数。如果靠手中的这些面值的硬币无法组合得到想要的面值，则返回-1.</p>
+<p>&nbsp;&nbsp;在一开始解决这个问题时，我是这么思考的：<br><img src="http://7xt4ft.com1.z0.glb.clouddn.com/coins.png" alt="思路脑图"><br>&nbsp;&nbsp;这么复杂的思路实现起来也是很费劲儿的，当中遇到了很多坑，发现自己无法逾越之后，果断选择了google之。下面就给大家讲讲解这道题的正确思路。<br>&nbsp;&nbsp;网上给出的答案，大部分都提到了动态规划算法。那么什么是动态规划算法呢？在解析这道题目之前，我想先带大家回顾一下我们算法都学过的0-1背包问题。<br>&nbsp;&nbsp;有n种物品，每种物品的重量为W[i],价值为P[i],每种物品只有一个，我们只有一个背包且背包的容量有限制，只能装总重为w重量的物品。那么如何才能保证我们的背包中放入的物品价值最高呢？<br>&nbsp;&nbsp;题目中告诉我们，每种物品只能拿一次，意味着每种物品只有两种状态————即没拿0，拿了1.这种问题就是0-1背包问题。当然这只是背包问题中比较简单地一种情形。常见的背包问题还有有界背包问题，无界背包问题。但这些都可以通过对问题进行分解而使用0-1背包的解决方法来解决问题。<br>&nbsp;&nbsp;0-1背包问题是用来讲解动态规划最常见的例子。动态规划解决问题的关键在于状态的定义和状态转移方程的定义。如果你想更加详细的了解动态规划算法，可以去看知乎上的讨论(<a href="https://www.zhihu.com/question/23995189" target="_blank" rel="external">什么是动态规划？动态规划的意义是什么？</a>).<br>&nbsp;&nbsp;回到正题，我们来解决0-1背包问题。先看看维基百科上对0-1背包问题的数学表达(<a href="https://zh.wikipedia.org/wiki/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98" target="_blank" rel="external">背包问题</a>)：</p>
+<blockquote>
+<p>我们有n种物品，物品j的重量为wj，价格为pj。<br> 我们假定所有物品的重量和价格都是非负的。背包所能承受的最大重量为W。<br> 如果限定每种物品只能选择0个或1个，则问题称为0-1背包问题。<br> 最大化 <img src="https://upload.wikimedia.org/math/e/a/1/ea13228b2e191bea18790a4718a668ba.png" alt="维基百科中对0-1背包的数学表达"><br> 受限于 <img src="https://upload.wikimedia.org/math/b/d/4/bd46e8163314e0eafa46b8f89f48cbfb.png" alt="维基百科中对0-1背包的数学表达"></p>
+</blockquote>
+<p>&nbsp;&nbsp;那么我们如何得到这个问题的解呢？<br>&nbsp;&nbsp;按照我之前的思路，我们需要先把大问题分解成一个个小问题，求解小问题的最优解，最后通过一些计算得到大问题的最优解。全局最优解包含局部最优解，这一点是我们在用动态规划解决问题时必须明确的一点。<br>&nbsp;&nbsp;那么如果分解成小问题，那么我们来对问题进行抽象，找到其状态：</p>
+<blockquote>
+<p>状态A(i,w)表示前i个物品装到剩余体积为w的背包里能达到的最大价值。</p>
+</blockquote>
+<p>&nbsp;&nbsp;好了，现在我们找到了所谓的状态，那么状态转移方程又该如何定义呢？根据之前说的，父问题的最优解由子问题的最优解而来。所以便有了如下方程：</p>
+<blockquote>
+<p>A(i,w) = max{A(i-1,w),P[i]+A(i-1,w-W[i])}<br>此外还需定义两个特殊状态：A(0,w) = 0, A(i,0) = 0</p>
+</blockquote>
+<p>&nbsp;&nbsp;来解释一下这个方程：</p>
+<blockquote>
+<p>首先A(i,w)的值在这里做了一次比较以得到最优解，我们观察下比较的两者会发现，前者是上一个状态（子状态）对w的最优解（也就是说不在增加i物品的情况），那么如果总重量中包含了i物品，要得到上一个状态的最优解，对应的总重量就变成了w-W[i].通过这样的比较可以确定A(i,w)的最优解。</p>
+</blockquote>
+<p>我觉得自己理解的还不够到位，想了解的更多可以看看这篇文章<a href="http://www.hawstein.com/posts/dp-knapsack.html" target="_blank" rel="external">动态规划之背包问题</a></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/05/04/20160504/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"Lever"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257400587'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257400587' type='text/javascript'%3E%3C/script%3E"));</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
