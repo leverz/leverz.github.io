@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      前端高效开发初探——远端服务器与本地文件的同步问题 | Lever&#39;s castle 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Lever Wang">
+    
+    
+
+    <meta name="description" content="&amp;emsp;&amp;emsp;在前后端联调的时候经常会要求我们把后端的模板文件上传的测试服务器。一般我们会使用ftp或者ssh协议来解决这个问题。然而我们在调试的时候经常要不停的修改这些文件，如果手动的去进行本地文件与服务器上文件的同步，就太低效了。作为一名搞计算机的程序员，遇到这种问题那就必须得学会偷懒啦~
+Sublime sftp插件&amp;emsp;&amp;emsp;鉴于大部分同学都在使用sublime，我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端高效开发初探——远端服务器与本地文件的同步问题 | Lever's castle">
+<meta property="og:url" content="http://www.lever.wang/2016/05/07/远端服务器与本地文件的同步问题/index.html">
+<meta property="og:site_name" content="Lever's castle">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在前后端联调的时候经常会要求我们把后端的模板文件上传的测试服务器。一般我们会使用ftp或者ssh协议来解决这个问题。然而我们在调试的时候经常要不停的修改这些文件，如果手动的去进行本地文件与服务器上文件的同步，就太低效了。作为一名搞计算机的程序员，遇到这种问题那就必须得学会偷懒啦~
+Sublime sftp插件&amp;emsp;&amp;emsp;鉴于大部分同学都在使用sublime，我们">
+<meta property="og:image" content="http://7xt4ft.com2.z0.glb.clouddn.com/downloadSftp.png">
+<meta property="og:image" content="http://7xt4ft.com2.z0.glb.clouddn.com/uploadsetting.png">
+<meta property="og:image" content="http://7xt4ft.com2.z0.glb.clouddn.com/local.png">
+<meta property="og:updated_time" content="2016-05-06T18:58:31.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端高效开发初探——远端服务器与本地文件的同步问题 | Lever's castle">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在前后端联调的时候经常会要求我们把后端的模板文件上传的测试服务器。一般我们会使用ftp或者ssh协议来解决这个问题。然而我们在调试的时候经常要不停的修改这些文件，如果手动的去进行本地文件与服务器上文件的同步，就太低效了。作为一名搞计算机的程序员，遇到这种问题那就必须得学会偷懒啦~
+Sublime sftp插件&amp;emsp;&amp;emsp;鉴于大部分同学都在使用sublime，我们">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for Lever&#39;s castle"><img src="/images/avatar.png" width="80" alt="Lever&#39;s castle logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Lever&#39;s castle</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          Keep hungry,stay foolish
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/leverz" title="Lever's Github">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+      -->
+      <li class="navigation__item">
+        <a href="http://weibo.com/u/3759364137" title="Lever's Weibo">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">前端高效开发初探——远端服务器与本地文件的同步问题</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-05-07" class="post-meta__date date">2016-05-07</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/前端-开发环境搭建/">前端 开发环境搭建</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>&emsp;&emsp;在前后端联调的时候经常会要求我们把后端的模板文件上传的测试服务器。一般我们会使用ftp或者ssh协议来解决这个问题。然而我们在调试的时候经常要不停的修改这些文件，如果手动的去进行本地文件与服务器上文件的同步，就太低效了。作为一名搞计算机的程序员，遇到这种问题那就必须得学会偷懒啦~</p>
+<h2 id="Sublime_sftp插件">Sublime sftp插件</h2><p>&emsp;&emsp;鉴于大部分同学都在使用sublime，我们就先说说这个。<br>&emsp;&emsp;我们要先用package control安装一个sftp插件：<br><img src="http://7xt4ft.com2.z0.glb.clouddn.com/downloadSftp.png" alt="安装sftp插件"><br>然后我们可以在项目中添加一个sftp-config.json的配置文件，通过配置文件我们可以实现在保存之后文件自动通过sftp上传的功能。这样我们以后再修改本地的代码，只需要按下command + s就可上传文件啦~，是不是很方便。<br>&emsp;&emsp;具体配置文件可以参考这个：<a href="https://gist.github.com/clarklab/4029153" target="_blank" rel="external">sftp-config.json</a><br>&emsp;&emsp;这种方式是最常见的，而且最关键的在于，sublime的sftp配置允许password为空。这样当我们处在使用kerberos等企业环境下用票据登录服务器的工具时就不会存在问题啦。</p>
+<h2 id="WebStorm">WebStorm</h2><p>&emsp;&emsp;接下来，神器出场的时间到了，Orz~~~<br>&emsp;&emsp;在webstorm中我们可以使用如下方式与服务器上的文件进行同步，使用webstorm的好处在于，不管你用何种方式与服务器进行同步，它都可以帮你检查服务器上的文件，如果本地和服务器的文件相同，他是不会上传的，如果两者有冲突，他会要求你做检查，以便确认。而且我们也可以在webstorm上进行配置，在按下某些键的时候再进行上传操作。<br><img src="http://7xt4ft.com2.z0.glb.clouddn.com/uploadsetting.png" alt="webstorm自动上传配置"><br>&emsp;&emsp;然而，我们的神器也会有不好用的时候。前段时间，我就被kerberos搞蒙了。webstorm无论使用sftp,还是ssh，或者是别的方式连接服务器，都需要你填写password，注意是必填哦！这下不就惨了……我们有的只是一张通行证，哪儿有什么password。这还怎么搞？<br>&emsp;&emsp;傻傻的我一开始解决不了这个问题，便写了一个shell脚本，通过scp命令上传文件。但是这样的方式还是太繁琐了。每次都要在命令行手动执行一遍脚本。而且这种方式，没办法只监听文件变动并上传变动的文件。我们需要更懒一点的办法。<br>&emsp;&emsp;后来我想到可以用gulp监听文件变化，然后通过gulp-sftp插件上传文件。但是同样会需要添加密码。这个问题我觉得如果了解kerberos的话应该是可以解决的。后期可以去研究一下。<br>&emsp;&emsp;那么最后我是怎么解决这个问题的呢？<br>&emsp;&emsp;在某天一位大神的指点下了解到了一个磁盘映射东西，瞬间感觉豁然开朗。我用了一个叫sshfs的工具，把远端服务器磁盘上的文件映射到了本地。然后我就可以像操作本地文件那样操作远端服务器上的文件了。sshfs通过ssh协议连接到服务器，修改映射到本地的文件会自动映射回服务器上。<br>&emsp;&emsp;sshfs的安装（MAC下，Windows请自行研究）：<br>    sshfs依赖Xcode环境，所以你的mac需要有装好的Xcode。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install homebrew/fuse/sshfs</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;我是通过homebrew安装的，执行以上命令即可。</p>
+<p>&emsp;&emsp;装好之后我们就可以将服务器的文件挂载到本地啦~<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    sshfs -p port kelu@kelu.org:/ /Users/kelu/Linode</span><br><span class="line">```    </span><br><span class="line">&amp;emsp;&amp;emsp;根据上面的命令，指定对应的端口（可以省略），然后是用户名@域名或者ip:路径。举个栗子~，我要将主机<span class="number">10.4</span>.<span class="number">32.134</span>下的/data/webRoot/views/的文件挂载到本地的~/share目录下，我就可以这么敲：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">    sshfs root@<span class="number">10.4</span>.<span class="number">32.134</span>:/data/webRoot/views ~/share</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;很简单的一行命令，我们就把远端目录映射到本地了。<br>映射到本地之后呢，那想怎么搞，都很方便啦。<br>&emsp;&emsp;我目前的方案是使用webstorm的一个同步本地文件的功能来完成的。<br><img src="http://7xt4ft.com2.z0.glb.clouddn.com/local.png" alt="Local or mounted folder"><br>&emsp;&emsp;当然我们也可以使用自动化构建工具来完成这一步骤。我目前的想法是用gulp监听文件变化，然后使用dest方法将变动的文件输出到我们的磁盘映射目录中去。下面是我用gulp创建的一个task。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    gulp.task(<span class="string">'copy'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	gulp.watch(<span class="string">'./src/jsp/**'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> oldPath = e.path;<span class="comment">//获取当前发生改变的文件的路径</span></span><br><span class="line">		<span class="comment">//通过正则匹配获取文件名</span></span><br><span class="line">		<span class="keyword">var</span> filename = oldPath.match(<span class="regexp">/\w*\.\w*/</span>)[<span class="number">0</span>];</span><br><span class="line">		<span class="comment">//通过正则匹配修改路径得到目的路径</span></span><br><span class="line">		<span class="keyword">var</span> newPath = oldPath.replace(<span class="regexp">/\/(.)*\/jsp/</span>,<span class="string">'/Users/renren/share'</span>);</span><br><span class="line">		<span class="comment">//dest的参数是目的目录，不能包含文件，所以去掉文件名</span></span><br><span class="line">		newPath = newPath.replace(<span class="string">'/'</span>+filename,<span class="string">''</span>);</span><br><span class="line">		<span class="comment">//通过src读取文件，并通过dest输出到指定目录</span></span><br><span class="line">		gulp.src(oldPath)</span><br><span class="line">		.pipe(gulp.dest(newPath));</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;以上就是一点我的见解，如果你还有别的特别好的方案，快来告诉我呦~~</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/05/07/远端服务器与本地文件的同步问题/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"Lever"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257400587'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257400587' type='text/javascript'%3E%3C/script%3E"));</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
